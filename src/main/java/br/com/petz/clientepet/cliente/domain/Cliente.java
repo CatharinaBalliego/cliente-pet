@@ -32,8 +32,8 @@ public class Cliente {
 	@Email
 	private String email;
 	@NotBlank
-	private int celular;
-	private int telefone;
+	private String celular;
+	private String telefone;
 	private Sexo sexo;
 	@NotNull
 	private LocalDate dataNascimento;
@@ -45,7 +45,7 @@ public class Cliente {
 	private LocalDateTime dataHoraCadastro;
 	private LocalDateTime dataHoraAlteracao;
 	
-	public Cliente(@NotBlank String nomeCompleto, @NotBlank @Email String email, @NotBlank int celular, int telefone,
+	public Cliente(@NotBlank String nomeCompleto, @NotBlank @Email String email, @NotBlank String celular, String telefone,
 			Sexo sexo, @NotNull LocalDate dataNascimento, @CPF String cpf, @NotNull Boolean aceitaTermos) {
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
