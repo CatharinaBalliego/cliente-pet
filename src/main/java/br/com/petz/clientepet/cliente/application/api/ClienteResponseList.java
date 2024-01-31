@@ -4,17 +4,29 @@ import java.util.List;
 import java.util.UUID;
 
 import br.com.petz.clientepet.cliente.domain.Cliente;
+import lombok.Value;
 
+@Value
 public class ClienteResponseList {
+
 	private UUID idCliente;
 	private String nomeCompleto;
 	private String cpf;
 	private String celular;
 	private String email;
 	
-	public static List<ClienteResponseList> converter(List<Cliente> clienteResponseList) {
-		// TODO Auto-generated method stub
-		return null;
+	public ClienteResponseList(Cliente cliente) {
+		super();
+		this.idCliente = cliente.getIdCliente();
+		this.nomeCompleto = cliente.getNomeCompleto();
+		this.cpf = cliente.getCpf();
+		this.celular = cliente.getCelular();
+		this.email = cliente.getEmail();
+	}
+	
+	public static List<ClienteResponseList> converter(List<Cliente> clientes) {
+		return clientes.stream()
+				.map(ClienteResponseList::new).toList();
 	}
 	
 }

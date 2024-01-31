@@ -27,9 +27,9 @@ public class ClienteInfraRepository implements ClienteRepository {
 	public List<Cliente> listarTodosClientes() {
 
 		log.info("[inicia] ClinteInfraRepository - listarTodosClientes");
-//		clienteSpringDataJPARepository.ge
+		List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
 		log.info("[finaliza] ClinteInfraRepository - listarTodosClientes");
-		return null;
+		return todosClientes;
 	}
 
 }
