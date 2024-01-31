@@ -1,6 +1,7 @@
 package br.com.petz.clientepet.cliente.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +32,15 @@ public class ClienteController implements ClienteAPI {
 		List<ClienteResponseList> clienteResponseList = clienteService.listarTodosClientes();
 		log.info("[finaliza] ClienteController - getTodosClientes");
 		return clienteResponseList;
+	}
+
+	@Override
+	public ClienteDetalhadoResponse getClientePorId(UUID idCliente) {
+		log.info("[inicia] ClienteController - getClientePorId");
+		log.info("[IdCliente] {}", idCliente);
+//		ClienteDetalhadoResponse clienteDetalhadoResponse = clienteService.selenicionarClientePorId();
+		log.info("[finaliza] ClienteController - getClientePorId");
+		return null;
 	}
 
 }
