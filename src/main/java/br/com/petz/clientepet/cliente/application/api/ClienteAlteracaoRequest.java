@@ -14,7 +14,6 @@ import lombok.Value;
 public class ClienteAlteracaoRequest {
 	private String nomeCompleto;
 	@NotBlank
-	@NotBlank
 	private String celular;
 	private String telefone;
 	private Sexo sexo;

@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.petz.clientepet.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.petz.clientepet.cliente.application.api.ClienteDetalhadoResponse;
 import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import br.com.petz.clientepet.cliente.application.api.ClienteResponse;
@@ -40,18 +41,28 @@ public class ClienteApplicationService implements ClienteService {
 
 	@Override
 	public ClienteDetalhadoResponse buscarClientePorId(UUID idCliente) {
-		log.info("[inicia] ClienteDetalhadoResponse - buscarClientePorId");
+		log.info("[inicia] ClienteApplicationService - buscarClientePorId");
 		Cliente cliente = clienteRepository.buscarClientePorId(idCliente);
-		log.info("[finaliza] ClienteDetalhadoResponse - buscarClientePorId");
+		log.info("[finaliza] ClienteApplicationService - buscarClientePorId");
 		return new ClienteDetalhadoResponse(cliente);
 	}
 
 	@Override
 	public void deletarClientePorId(UUID idCliente) {
-		log.info("[inicia] ClienteDetalhadoResponse - deletarClientePorId");
+		log.info("[inicia] ClienteApplicationService - deletarClientePorId");
 		Cliente cliente = clienteRepository.buscarClientePorId(idCliente);
 		clienteRepository.deletarCliente(cliente);
-		log.info("[finaliza] ClienteDetalhadoResponse - deletarClientePorId");
+		log.info("[finaliza] ClienteApplicationService - deletarClientePorId");
+		
+	}
+
+	@Override
+	public void patchAlterarCliente(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		log.info("[inicia] ClienteApplicationService - patchAlterarCliente");
+		Cliente cliente = clienteRepository.buscarClientePorId(idCliente);
+		cliente.alterar(clienteAlteracaoRequest);
+		clienteRepository.salvar(cliente);
+		log.info("[finaliza] ClienteApplicationService - patchAlterarCliente");
 		
 	}
 
