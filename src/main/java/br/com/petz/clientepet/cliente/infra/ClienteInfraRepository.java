@@ -1,6 +1,7 @@
 package br.com.petz.clientepet.cliente.infra;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,15 @@ public class ClienteInfraRepository implements ClienteRepository {
 		List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
 		log.info("[finaliza] ClinteInfraRepository - listarTodosClientes");
 		return todosClientes;
+	}
+
+	@Override
+	public Cliente buscarClientePorId(UUID idCliente) {
+		log.info("[inicia] ClienteInfraRepository - buscarClientePorId");
+		Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
+				.orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
+		log.info("[finaliza] ClienteInfraRepository - buscarClientePorId");
+		return cliente;
 	}
 
 }

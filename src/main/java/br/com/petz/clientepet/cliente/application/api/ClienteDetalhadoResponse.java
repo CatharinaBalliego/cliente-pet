@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.petz.clientepet.cliente.domain.Cliente;
 import br.com.petz.clientepet.cliente.domain.Sexo;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -22,8 +23,18 @@ public class ClienteDetalhadoResponse {
 	private String telefone;
 	private String cpf;
 	private Boolean aceitaTermos;
-	
 	private LocalDateTime dataHoraCadastro;
+	
+	public ClienteDetalhadoResponse(Cliente cliente) {
+		this.idCliente = cliente.getIdCliente();
+		this.nomeCompleto = cliente.getNomeCompleto();
+		this.email = cliente.getEmail();
+		this.celular = cliente.getCelular();
+		this.telefone = cliente.getTelefone();
+		this.cpf = cliente.getCpf();
+		this.aceitaTermos = cliente.getAceitaTermos();
+		this.dataHoraCadastro = cliente.getDataHoraCadastro();
+	}
 	
 
 }

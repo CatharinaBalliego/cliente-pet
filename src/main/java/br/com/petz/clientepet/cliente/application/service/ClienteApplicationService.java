@@ -41,7 +41,9 @@ public class ClienteApplicationService implements ClienteService {
 	@Override
 	public ClienteDetalhadoResponse buscarClientePorId(UUID idCliente) {
 		log.info("[inicia] ClienteDetalhadoResponse - buscarClientePorId");
+		Cliente cliente = clienteRepository.buscarClientePorId(idCliente);
 		log.info("[finaliza] ClienteDetalhadoResponse - buscarClientePorId");
+		return new ClienteDetalhadoResponse(cliente);
 	}
 
 }
