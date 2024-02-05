@@ -9,4 +9,5 @@ public interface ClienteRepository {
 	Cliente salvar(Cliente cliente);
 	List<Cliente> listarTodosClientes();
 	Cliente buscarClientePorId(UUID idCliente);
+	void deletarCliente(Cliente cliente);
 }
