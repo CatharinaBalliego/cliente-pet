@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.petz.clientepet.pet.service.PetService;
+import br.com.petz.clientepet.pet.application.service.PetService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -28,10 +28,10 @@ public class PetController implements PetAPI {
 
 
 	@Override
-	public List<PetClienteResponse> listarTodosPetsDoCliente(UUID idCliente) {
+	public List<PetClienteResponseList> listarTodosPetsDoCliente(UUID idCliente) {
 		log.info("[inicia] PetController - listarTodosPetsDoCliente");
 		log.info("[idCliente] {}", idCliente);
-		List<PetClienteResponse> petsDocliente = petService.listarTodosPets(idCliente);
+		List<PetClienteResponseList> petsDocliente = petService.listarTodosPets(idCliente);
 		log.info("[finaliza] PetController - listarTodosPetsDoCliente");
 		return petsDocliente;
 	}
