@@ -1,9 +1,10 @@
-package br.com.petz.clientepet.pet.application;
+package br.com.petz.clientepet.pet.application.api;
 
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
+
 import br.com.petz.clientepet.pet.service.PetService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,9 @@ public class PetController implements PetAPI {
 	public List<PetClienteResponse> listarTodosPetsDoCliente(UUID idCliente) {
 		log.info("[inicia] PetController - listarTodosPetsDoCliente");
 		log.info("[idCliente] {}", idCliente);
+		List<PetClienteResponse> petsDocliente = petService.listarTodosPets(idCliente);
 		log.info("[finaliza] PetController - listarTodosPetsDoCliente");
-		return null;
+		return petsDocliente;
 	}
 
 }
