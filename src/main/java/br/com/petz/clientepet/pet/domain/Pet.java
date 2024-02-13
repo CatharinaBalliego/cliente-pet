@@ -1,8 +1,10 @@
 package br.com.petz.clientepet.pet.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.petz.clientepet.pet.application.PetRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,7 +12,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +27,10 @@ public class Pet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idPet", updatable = false, unique = true, nullable = false)
 	private UUID idPet;
+
+	@NotNull
+	@Column(columnDefinition = "uuid", name = "idClienteTutor", nullable = false)
+	private UUID idClienteTutor;
 	
 	@NotBlank
 	private String nomePet;
@@ -36,16 +44,16 @@ public class Pet {
 	private String microchip;
 
 	@Enumerated(EnumType.STRING)
-	private SexoPet sexo;
+	private SexoPet sexoPet;
 	
 	private String pelagem;
 	
-	@NotBlank
-	private LocalDateTime dataNascimento;
+	@NotNull
+	private LocalDate dataNascimento;
 	
 	private String raca;
 	
-	private String RGA;
+	private String rga;
 	
 	private double peso;
 	
@@ -53,5 +61,19 @@ public class Pet {
 	private LocalDateTime dataHoraAlteracao;
 	
 	
+	public Pet(UUID idCliente, @Valid PetRequest petRequest) {
+		this.idClienteTutor = idCliente;
+		this.nomePet = petRequest.getNomePet();
+		this.porte = petRequest.getPorte();
+		this.tipo = petRequest.getTipo();
+		this.microchip = petRequest.getMicrochip();
+		this.sexoPet = petRequest.getSexoPet();
+		this.pelagem = petRequest.getPelagem();
+		this.dataNascimento = petRequest.getDataNascimento();
+		this.raca = petRequest.getRaca();
+		this.rga = petRequest.getRga();
+		this.peso = petRequest.getPeso();
+		this.dataHoracadastro = LocalDateTime.now();
+	}
 
 }
