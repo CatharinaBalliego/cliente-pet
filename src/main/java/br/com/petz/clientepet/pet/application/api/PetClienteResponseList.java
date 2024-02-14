@@ -22,7 +22,7 @@ public class PetClienteResponseList {
 	
 	public PetClienteResponseList(Pet pet) {
 		super();
-		this.nomePet = pet.getIdPet();
+		this.idPet = pet.getIdPet();
 		this.nomePet = pet.getNomePet();
 		this.tipo = pet.getTipo();
 		this.pelagem = pet.getPelagem();
