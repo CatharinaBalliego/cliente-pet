@@ -13,30 +13,21 @@ import lombok.Value;
 @Value
 public class PetClienteResponseList {
 
-
+	private UUID idPet;
 	private String nomePet;
-	private Porte porte;
 	private TipoPet tipo;
-	private String microchip;
-	private SexoPet sexoPet;
 	private String pelagem;
 	private LocalDate dataNascimento;
 	private String raca;
-	private String rga;
-	private double peso;
 	
 	public PetClienteResponseList(Pet pet) {
 		super();
+		this.nomePet = pet.getIdPet();
 		this.nomePet = pet.getNomePet();
-		this.porte = pet.getPorte();
 		this.tipo = pet.getTipo();
-		this.microchip = pet.getMicrochip();
-		this.sexoPet = pet.getSexoPet();
 		this.pelagem = pet.getPelagem();
 		this.dataNascimento = pet.getDataNascimento();
 		this.raca = pet.getRaca();
-		this.rga = pet.getRga();
-		this.peso = pet.getPeso();
 	}
 	
 	public static List<PetClienteResponseList>  converter(List<Pet> pets){

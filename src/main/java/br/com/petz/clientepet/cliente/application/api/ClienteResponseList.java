@@ -2,6 +2,7 @@ package br.com.petz.clientepet.cliente.application.api;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import br.com.petz.clientepet.cliente.domain.Cliente;
 import lombok.Value;
@@ -26,7 +27,8 @@ public class ClienteResponseList {
 	
 	public static List<ClienteResponseList> converter(List<Cliente> clientes) {
 		return clientes.stream()
-				.map(ClienteResponseList::new).toList();
+				.map(ClienteResponseList::new)
+				.collect(Collectors.toList());
 	}
 	
 }
