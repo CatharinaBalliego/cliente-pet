@@ -47,6 +47,13 @@ public class PetApplicationService implements PetService {
 		Pet pet = petRepository.buscarPetPorId(idPet);
 		log.info("[finalizar] PetApplicationService - buscarPetPorClienteId");
 		return new PetClienteResponse(pet);
+	}
+
+	@Override
+	public void deletarPetDoCliente(UUID idCliente, UUID idPet) {
+		log.info("[iniciar] PetApplicationService - deletarPetDoCliente");
+		log.info("[finalizar] PetApplicationService - deletarPetDoCliente");
+		
 	}	
 
 }

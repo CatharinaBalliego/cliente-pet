@@ -17,4 +17,6 @@ public interface PetService {
 
 	PetClienteResponse buscarPetPorClienteId(UUID idCliente, UUID idPet);
 
+	void deletarPetDoCliente(UUID idCliente, UUID idPet);
+
 }
