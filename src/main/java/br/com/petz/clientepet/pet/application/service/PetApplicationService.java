@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.petz.clientepet.cliente.application.service.ClienteService;
+import br.com.petz.clientepet.pet.application.api.PetClienteResponse;
 import br.com.petz.clientepet.pet.application.api.PetClienteResponseList;
 import br.com.petz.clientepet.pet.application.api.PetRequest;
 import br.com.petz.clientepet.pet.application.api.PetResponse;
@@ -37,6 +38,14 @@ public class PetApplicationService implements PetService {
 		List<Pet> pets  = petRepository.listarPetsCliente(idCliente);
 		log.info("[finalizar] PetApplicationService - listarTodosPets");
 		return PetClienteResponseList.converter(pets);
+	}
+
+	@Override
+	public PetClienteResponse buscarPetPorClienteId(UUID idCliente, UUID idPet) {
+		log.info("[iniciar] PetApplicationService - buscarPetPorClienteId");
+		
+		log.info("[finalizar] PetApplicationService - buscarPetPorClienteId");
+		return null;
 	}	
 
 }
